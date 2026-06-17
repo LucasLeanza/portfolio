@@ -1,8 +1,11 @@
+import useScrollAnimation from '../hooks/useScrollAnimation'
 import styles from './Contact.module.css'
 
 function Contact() {
+  const [ref, isVisible] = useScrollAnimation()
+
   return (
-    <section id="contact" className={styles.contact}>
+    <section ref={ref} id="contact" className={`${styles.contact} animate ${isVisible ? 'visible' : ''}`}>
       <p className={styles.label}>// contact</p>
       <h2 className={styles.title}>Hablemos</h2>
       <p className={styles.subtitle}>

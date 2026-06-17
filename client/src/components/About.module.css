@@ -37,3 +37,9 @@
   color: var(--text);
   font-weight: 500;
 }
+
+@media (max-width: 768px) {
+  .about {
+    padding: 5rem 6%;
+  }
+}

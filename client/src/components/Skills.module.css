@@ -79,3 +79,13 @@
   color: var(--accent);
   font-family: var(--font-mono);
 }
+
+@media (max-width: 768px) {
+  .skills {
+    padding: 5rem 6%;
+  }
+
+  .title {
+    margin-bottom: 2.5rem;
+  }
+}

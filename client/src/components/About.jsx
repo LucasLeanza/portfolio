@@ -1,8 +1,11 @@
+import useScrollAnimation from '../hooks/useScrollAnimation'
 import styles from './About.module.css'
 
 function About() {
+  const [ref, isVisible] = useScrollAnimation()
+
   return (
-    <section id="about" className={styles.about}>
+    <section ref={ref} id="about" className={`${styles.about} animate ${isVisible ? 'visible' : ''}`}>
       <p className={styles.label}>// about_me</p>
       <h2 className={styles.title}>
         Desarrollador apasionado<br />por el código <span>limpio</span>

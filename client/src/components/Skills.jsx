@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import { getSkills } from '../services/api'
+import useScrollAnimation from '../hooks/useScrollAnimation'
 import styles from './Skills.module.css'
 
 function Skills() {
   const [skills, setSkills] = useState([])
   const [loading, setLoading] = useState(true)
+  const [ref, isVisible] = useScrollAnimation()
 
   useEffect(() => {
     getSkills()
@@ -18,27 +20,27 @@ function Skills() {
       })
   }, [])
 
-  if (loading) return <p>Cargando...</p>
-
   return (
-    <section id="skills" className={styles.skills}>
+    <section ref={ref} id="skills" className={`${styles.skills} animate ${isVisible ? 'visible' : ''}`}>
       <p className={styles.label}>// tech_stack</p>
       <h2 className={styles.title}>Skills</h2>
-      <div className={styles.grid}>
-        {skills.map(skill => (
-          <div key={skill._id} className={styles.card}>
-            <div className={styles.cardHeader}>
-              <span className={styles.dot} />
-              <span className={styles.dot} />
-              <span className={styles.dot} />
+      {loading ? <p>Cargando...</p> : (
+        <div className={styles.grid}>
+          {skills.map(skill => (
+            <div key={skill._id} className={styles.card}>
+              <div className={styles.cardHeader}>
+                <span className={styles.dot} />
+                <span className={styles.dot} />
+                <span className={styles.dot} />
+              </div>
+              <div className={styles.cardBody}>
+                <span className={styles.name}>{skill.name}</span>
+                <span className={styles.category}>{skill.category}</span>
+              </div>
             </div>
-            <div className={styles.cardBody}>
-              <span className={styles.name}>{skill.name}</span>
-              <span className={styles.category}>{skill.category}</span>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </section>
   )
 }

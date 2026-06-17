@@ -97,3 +97,13 @@
   font-size: 0.78rem;
   color: var(--muted);
 }
+
+@media (max-width: 768px) {
+  .blog {
+    padding: 6rem 6% 5rem;
+  }
+
+  .title {
+    margin-bottom: 2.5rem;
+  }
+}
