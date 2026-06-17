@@ -1,0 +1,132 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 6%;
+  padding-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 60% 50%, rgba(191,0,255,0.12) 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 80%, rgba(0,212,255,0.08) 0%, transparent 50%);
+  animation: gradientShift 8s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+@keyframes gradientShift {
+  0%   { opacity: 0.6; transform:scale(1); }
+  100% { opacity: 1;   transform:scale(1.1); }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 750px;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--secondary);
+  margin-bottom: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.name {
+  font-family: var(--font-mono);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -2px;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.85em;
+  background: var(--accent);
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.cursorDone {
+  display: inline-block;
+  width: 3px;
+  height: 0.85em;
+  background: var(--accent);
+  margin-left: 4px;
+  vertical-align: middle;
+  box-shadow: 0 0 8px var(--accent);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.role {
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-weight: 300;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 500px;
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  padding: 0.8rem 2rem;
+  background: var(--accent);
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  box-shadow: 0 0 20px rgba(191, 0, 255, 0.3);
+}
+
+.btnPrimary:hover {
+  box-shadow: 0 0 35px rgba(191, 0, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.btnSecondary {
+  padding: 0.8rem 2rem;
+  background: transparent;
+  color: var(--secondary);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  border: 1px solid var(--secondary);
+  transition: var(--transition);
+}
+
+.btnSecondary:hover {
+  background: rgba(0, 212, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+  transform: translateY(-2px);
+}
